@@ -1,10 +1,10 @@
-package ru.netology.bdsql.page;
+package ru.netology.bdsql.data;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 
 @Data
-@RequireArgsConstructor
+@RequiredArgsConstructor
 public class UserData {
     private final String name;
     private final String password;
