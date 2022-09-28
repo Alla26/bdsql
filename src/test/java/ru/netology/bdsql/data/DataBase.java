@@ -23,7 +23,7 @@ public class DataBase {
     @SneakyThrows
     public static void setup() throws SQLException {
         queryRunner = new QueryRunner();
-        var con = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "password");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "password");
 
     }
 
