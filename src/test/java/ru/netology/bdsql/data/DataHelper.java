@@ -8,6 +8,8 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DataHelper {
 
     private static Faker faker = new Faker();
@@ -21,9 +23,15 @@ public class DataHelper {
         return verifyCode;
     }
 
-    public static String invalidVerifyCode() {
-        int verifyCode = faker.number().numberBetween(100000, 999999);
-        return String.valueOf(verifyCode);
+    public static String invalidPass() {
+        String randomPass = faker.internet().password();
+        return randomPass;
+    }
+
+    public static void assertStatus(String login) {
+        String expected = "blocked";
+        String actual = DataBase.userStatus(login);
+        assertEquals(expected, actual);
     }
 
 }

@@ -18,6 +18,7 @@ public class LoginTest {
     UserData userData;
     LoginPage login;
 
+
     @BeforeEach
     public void setup() {
         open("http://localhost:9999/");
@@ -43,5 +44,20 @@ public class LoginTest {
         verification.input(DataHelper.validVerifyCode(userData.getName()));
         DashboardPage dashboard = new DashboardPage();
         dashboard.visiblePage();
+
+
+    }
+
+    @Test
+    public void blockedInvalidPass() {
+        login.input(userData.getName(), DataHelper.invalidPass());
+        login.failedInputData();
+        login.input(userData.getName(), DataHelper.invalidPass());
+        login.failedInputData();
+        login.input(userData.getName(), DataHelper.invalidPass());
+        login.failedInputData();
+        login.input(userData.getName(), DataHelper.invalidPass());
+        login.failedInputData();
+        DataHelper.assertStatus(userData.getName());
     }
 }

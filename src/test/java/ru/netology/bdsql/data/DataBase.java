@@ -10,6 +10,9 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import javax.management.Query;
 import java.sql.*;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.Executor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,13 +20,15 @@ import static java.sql.DriverManager.getConnection;
 
 public class DataBase {
 
+
     private static QueryRunner queryRunner;
     private static Connection connection;
 
+
     @SneakyThrows
-    public static void setup() throws SQLException {
+    public static void setup() {
         queryRunner = new QueryRunner();
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "password");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "password");
 
     }
 
